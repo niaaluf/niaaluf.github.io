@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Praktikum PKW</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="title">Survey Kepuasan Pelanggan</div>
+            <form action="#" class="container">
+                <label for="nama">Nama</label><br/>
+                <input type="text" name="nama" id="nama" placeholder="Masukkan nama anda"/>
+                <br />
+                <label for="umur">Umur</label><br/>
+                <input type="text" name="umur" id="umur" placeholder="Masukkan umur anda"/>
+                <br />
+                <label for="jeniskelamin">Jenis Kelamin</label><br/>
+                <input type="radio" name="jeniskelamin" id="jeniskelamin" value="laki-laki" /> Laki-Laki
+                <input type="radio" name="jeniskelamin" id="jeniskelamin" value="perempuan" /> Perempuan
+                <br />
+                <label for="nilaikepuasan">Nilai Kepuasan (1-5)</label><br/>
+                <input type="text" name="nilaikepuasan" id="nilaikepuasan" placeholder="Masukkan nilai" />
+                <br />
+                <label for="produk">Dari mana anda mengetahui produk kami</label><br/>
+                <input type="checkbox" name="produk" id="produk" value="Sosial Media" /> Sosial Media
+                <br />
+                <input type="checkbox" name="produk" id="produk" value="Teman" /> Teman
+                <br />
+                <input type="checkbox" name="produk" id="produk" value="Internet" /> Internet
+                <br />
+                <label for="layanan">Apakah anda menggunakan layanan kami?</label><br/>
+                <input type="radio" name="layanan" id="layanan" value="Ya" /> Ya
+                <input type="radio" name="layanan" id="layanan" value="Tidak" /> Tidak
+                <br />
+                <label for="kritiksaran">Kritik dan Saran</label><br/>
+                <textarea name="kritiksaran" id="kritiksaran" cols="50" rows="3"></textarea>
+                <br />
+
+                <input type="button" value="Kirim" onclick="tampilData()" />
+            </form>
+            <script>
+                function tampilData(){
+                    var nama = document.getElementById("nama").value;
+                    var umur = document.getElementById("umur").value;
+                    var jeniskelamin = document.querySelector("input[name=jeniskelamin]:checked").value;
+                    var nilaikepuasan = document.getElementById("nilaikepuasan").value;
+                    var produk = document.getElementsByName("produk");
+                    var layanan = document.querySelector("input[name=layanan]:checked").value;
+                    var kritiksaran = document.getElementById("kritiksaran").value;
+                    var daftarProduk = ''
+
+                    for(var produk2 of produk) {
+                        if(produk2.checked){
+                            daftarProduk += ', ' + produk2.value
+                        }
+                    }
+
+                    daftarProduk = daftarProduk.substring(1)
+
+                    alert(
+                        "Nama : " +
+                        nama +
+                        "\nUmur : " +
+                        umur +
+                        "\nJenis Kelamin : " +
+                        jeniskelamin +
+                        "\nNilai Kepuasan (1-5): " +
+                        nilaikepuasan +
+                        "\nInfo Layanan : " +
+                        daftarProduk +
+                        "\nMenggunakan Layanan : " +
+                        layanan +
+                        "\nKritik dan Saran : " +
+                        kritiksaran
+                    );
+                }
+            </script>
+        </div>
+    </body>
+</html>
